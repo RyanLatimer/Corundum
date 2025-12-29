@@ -4,6 +4,8 @@ require 'time'
 class Block
   attr_reader :index, :timestamp, :data, :previous_hash, :nonce, :hash
 
+  DIFFICULTY = 4
+
   def initialize(index, data, previous_hash)
     @index = index
     @timestamp = Time.now
@@ -17,6 +19,19 @@ class Block
     Digest::SHA256.hexdigest(
       "#{@index}#{@timestamp}#{@data}#{@previous_hash}#{@nonce}"
     )
+  end
+
+  def mine_block
+    target = "0" * DIFFICULTY
+
+    loop do
+      hash = calculate_hash
+      if hash.start_with?(target)
+        puts "Block mined! Nonce: #{nonce}"
+        return hash
+      end
+      @nonce += 1
+    end
   end
 end
 
