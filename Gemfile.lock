@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (2.18.0)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  json
+
+BUNDLED WITH
+   2.6.9
