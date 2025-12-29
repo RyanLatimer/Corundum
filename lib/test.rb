@@ -1,4 +1,4 @@
-require_relative 'Blockchain'
+require_relative 'blockchain'
 
 # Create new blockchain with blocks
 blockchain = Blockchain.new
