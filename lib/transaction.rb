@@ -1,5 +1,5 @@
 require 'digest'
-require 'opensl'
+require 'openssl'
 require 'base64'
 
 class Transaction
@@ -15,7 +15,7 @@ class Transaction
 
   # Create a hash of transaction data for signing
   def transaction_hash
-    Digestt::SHA256.hexdigest(
+    Digest::SHA256.hexdigest(
       "#{@sender}#{@receiver}#{@amount}#{@timestamp}:"
     )
   end
@@ -50,8 +50,8 @@ class Transaction
     {
       sender: @sender,
       receiver: @receiver,
-      amount: @amount
-      timestamp: @timestamp
+      amount: @amount,
+      timestamp: @timestamp,
       signature: @signature
     }
   end
